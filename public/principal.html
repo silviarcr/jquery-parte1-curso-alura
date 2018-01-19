@@ -4,27 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Alura Typer</title>
+    <link rel="stylesheet" href="css/libs/materialize.min.css">
+    <link rel="stylesheet" href="css/libs/google-fonts.css">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-    <!-- Seja bem vindo ao curso de jQuery :) -->
-    <h1>Alura Typer</h1>
-    <p class="frase">Esta frase tem oito belas palavras</p>
-    <ul class="informacoes">
-        <li><span id="tamanho-frase">5</span> palavras</li>
-        <li><span id="tempo-digitacao">6</span> segundos</li>
-    </ul>
-    <textarea class="campo-digitacao" cols="40" rows="8"></textarea>
-    <button id="botao-reiniciar">Reiniciar Jogo</button>
-    <ul>
-        <li>
-            <span id="contador-caracteres">0</span>
-        </li>
-        <li>
-            <span id="contador-palavras">0</span>
-        </li>
-    </ul>
+    <div class="container">
 
+        <!-- Seja bem vindo ao curso de jQuery :) -->
+        <h1 class="center">Alura Typer</h1>
+        <p class="frase center">Esta frase tem oito belas palavras</p>
+        <ul class="informacoes center">
+            <li>
+                <i class="small material-icons">description</i>
+                <span id="tamanho-frase">5</span> palavras</li>
+            <li>
+                <i class="small material-icons">query_builder</i>
+                <span id="tempo-digitacao">6</span> segundos</li>
+        </ul>
+        <textarea class="campo-digitacao" cols="40" rows="8"></textarea>
+
+        <!-- <button id="botao-reiniciar">Reiniciar Jogo</button> -->
+
+        <div class="botoes">
+            <a id="botao-reiniciar" class="btn-floating btn-large waves-effect waves-light red">
+                <i class="material-icons">restore</i>
+            </a>
+        </div>
+
+        <ul class="center">
+            <li>
+                <span id="contador-caracteres">0</span>
+            </li>
+            <li>
+                <span id="contador-palavras">0</span>
+            </li>
+        </ul>
+
+    </div>
     <script src="js/jquery.js"></script>
     <script src="js/main.js"></script>
 </body>
