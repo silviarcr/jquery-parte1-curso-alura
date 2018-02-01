@@ -50,6 +50,7 @@ function inicializaCronometro() {
                 // campo.css("background-color", "lightgray"); //novo
                 // campo.addClass("campo-desativado");
                 campo.toggleClass("campo-desativado");
+                inserePlacar();
                 $("#botao-reiniciar").attr("disabled", false);
             }
 
@@ -91,7 +92,7 @@ function inicializaMarcadores() {
 
         //var digitouCorreto = frase.startsWith(digitado);
         // if (digitouCorreto) {
-        if(frase.startsWith(digitado)) {
+        if (frase.startsWith(digitado)) {
             campo.addClass("borda-verde");
             campo.removeClass("borda-vermelha");
         }
@@ -102,3 +103,61 @@ function inicializaMarcadores() {
     });
 }
 
+function inserePlacar() {
+    // var placar = $(".placar");
+    // var corpoTabela = placar.find("tbody");
+    var corpoTabela = $(".placar").find("tbody");
+    var usuario = "Silvia";
+    var numPalavras = $("#contador-palavras").text();
+    // var botaoRemover = "<a href='#'><i class='small material-icons'>delete</i></a>";
+
+    // criaçao de linha -> esse bloco vai ser substituido pela funcao novaLinha
+    // var linha = "<tr>" +
+    //                     "<td>" + usuario + "</td>" +
+    //                     "<td>" + numPalavras + "</td>" +
+    //                     "<td>" + botaoRemover + "</td>" +
+    //               "<tr>";
+
+    var linha = novaLinha(usuario, numPalavras);
+    linha.find(".botao-remover").click(removeLinha);
+    corpoTabela.append(linha);
+    // corpoTabela.prepend(linha);
+
+}
+
+
+function novaLinha(usuario, palavras) {
+    var linha = $("<tr>");
+    var colunaUsuario = $("<td>").text(usuario);
+    var colunaPalavras = $("<td>").text(palavras);
+    var colunaRemover = $("<td>");
+
+    var link = $("<a>").attr("href", "#").addClass("botao-remover");
+    var icone = $("<i>").addClass("small").addClass("material-icons").text("delete");
+
+    //icone dentro do <a>
+    link.append(icone);
+
+    //<a> dentro do <td>
+    colunaRemover.append(link);
+
+    //os três <td> dentro do <tr>
+    linha.append(colunaUsuario);
+    linha.append(colunaPalavras);
+    linha.append(colunaRemover);
+
+    return linha;
+}
+
+function removeLinha(event) {
+    event.preventDefault();
+    $(this).parent().parent().remove();
+}
+
+
+// $(".botao-remover").click(function (event) {
+// $(".botao-remover").click(function (event) {
+$(".botao-remover").click(event, function () {
+    event.preventDefault();
+    $(this).parent().parent().remove();
+})
